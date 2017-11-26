@@ -1,0 +1,47 @@
+body {
+    background-image: url("img/background_hd.jpg");
+    background-repeat: no-repeat;
+    width: 1280px;
+    height: 720px;
+    color: white;
+    margin: 0;
+}
+#header {
+    height: 400px;
+    width: 1280px;
+}
+
+#header_left {
+    float: left;
+    width: 640px;
+    height: 100%;
+}
+
+#header_right {
+    float: left;
+    width: 640px;
+    height: 100%;
+}
+
+#info {
+    width: 100%;
+    text-align: right;
+    height: 30%;
+    font-size: 24px;
+}
+
+#navigation {
+
+}
+
+#content {
+    float: left;
+    height: 160px;
+    width: 1280;
+}
+
+#footer {
+    height: 160px;
+    width: 1280px;
+    clear: both;
+}
