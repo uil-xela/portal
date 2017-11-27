@@ -1,6 +1,6 @@
-var ApiKey = "rTK0iPw5TGWid3sVEx72dTq0LWa0g3n8";
 var Lang = "zh-TW";
 var WeatherIconBase = "https://developer.accuweather.com/sites/default/files/";
+var News = { index: 0, size: 0, obj: null };
 
 function onReceiveIpAddr() {
     if (this.readyState == 4 && this.status == 200) {
@@ -24,7 +24,7 @@ function onRecevieLocation() {
 function onReceiveWeather() {
     if (this.readyState == 4 && this.status == 200) {
         var res = JSON.parse(this.responseText);
-        console.log(res[0]);
+
         document.getElementById("weathertext").innerHTML += res[0].WeatherText;
         var iconIndex;
         if (res[0].WeatherIcon < 10)
@@ -32,8 +32,30 @@ function onReceiveWeather() {
         else
             iconIndex = res[0].WeatherIcon;
         document.getElementById("weatherimg").src = WeatherIconBase + iconIndex + "-s.png";
-        document.getElementById("temperature").innerHTML += res[0].Temperature.Metric.Value + "C";
+        document.getElementById("temperature").innerHTML += res[0].Temperature.Metric.Value + "&#8451;";
     }
+}
+
+function onReceiveNews() {
+    if (this.readyState == 4 && this.status == 200) {
+        var res = JSON.parse(this.responseText).articles;
+        News.size = res.length;
+        News.obj = res;
+        updateNews();
+    }
+}
+
+function updateNews() {
+    var i = News.index;
+    var res = News.obj;
+    if (i >= News.size)
+        i = 0;
+    document.getElementById("newsimg").src = res[i].urlToImage;
+    document.getElementById("news_title").innerHTML = res[i].title;
+    document.getElementById("news_description").innerHTML = res[i].description;
+    News.index = ++i;
+
+    setTimeout(updateNews, 5 * 1000);
 }
 
 function getIpAddr() {
@@ -45,8 +67,8 @@ function getIpAddr() {
 
 function getLocationFromIp(ip) {
     var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = onRecevieLocation;      
-    var url = "http://dataservice.accuweather.com/locations/v1/cities/ipaddress?apikey=" + ApiKey + "&q=" + ip + "&language=" + Lang;
+    xhr.onreadystatechange = onRecevieLocation;
+    var url = "http://dataservice.accuweather.com/locations/v1/cities/ipaddress?apikey=" + EccuApiKey + "&q=" + ip + "&language=" + Lang;
     xhr.open("GET", url, true);
     xhr.send();
 }
@@ -54,7 +76,15 @@ function getLocationFromIp(ip) {
 function getWeatherFromLocation(location) {
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = onReceiveWeather;
-    var url = "http://dataservice.accuweather.com/currentconditions/v1/" + location + "?apikey=" + ApiKey + "&language=" + Lang;
+    var url = "http://dataservice.accuweather.com/currentconditions/v1/" + location + "?apikey=" + EccuApiKey + "&language=" + Lang;
+    xhr.open("GET", url, true);
+    xhr.send();
+}
+
+function getNews() {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = onReceiveNews;
+    var url = "https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=" + GooApiKey;
     xhr.open("GET", url, true);
     xhr.send();
 }
@@ -76,5 +106,6 @@ function updateClock() {
 
 function init() {
     getIpAddr();
+    getNews();
     updateClock();
 }

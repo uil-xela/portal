@@ -1,28 +1,59 @@
 <html>
-	<head>
-		<link rel="stylesheet" type="text/css" href="styles.css" />
-		<script src="engine.js"></script>
-	</head>
-	<body onload="init();">
-		<div id="header">
-			<div id="header_left">
-			</div>
-			<div id="header_right">
-				<div id="info">
-					<span id="clock"></span>
-					<span id="city"></span>
-					<span id="weathertext"></span>
-					<span id="weathericon"><img id="weatherimg"></span>
-					<span id="temperature"></span>
-				</div>
-				<div id="navigation">
-				</div>
-			</div>	
-		</div>
-		<div id="content">
-		</div>
-		<div id="footer">
-		</div>
-		
-	</body>
+    <head>
+        <link rel="stylesheet" type="text/css" href="styles.css" />
+        <script src="apiKey.js"></script>
+        <script src="engine.js"></script>
+        <script src="key.js"></script>
+        <script src="focusManager.js"></script>
+    </head>
+    <body onload="init();">
+        <div id="header">
+            <div id="header_left">
+                <video id="window" class="focusable" tabIndex=-1 width="640px" poster="img/hdtv.jpg"></video>
+            </div>
+            <div id="header_right">
+                <div id="info">
+                    <span id="clock"></span>
+                    <span id="city"></span>
+                    <span id="weathertext"></span>
+                    <span id="temperature"></span>
+                    <span id="weathericon"><img id="weatherimg"></span>
+                </div>
+                <div id="news">
+                    <div id="news_image"><img id="newsimg"></div>
+                    <div id="news_title"></div>
+                    <div id="news_description"></div>
+                </div>
+                <div id="channel_info">
+                    <div class="banner_title">Current Channel: <span id="channel_title">BBC One</span></div>
+                    <span id="program_title">Claimed and Shamed</span>
+                    <div id="program_time">09:15 - 10:00</div>
+                    <span id="program_subtitle">Series 9: Episode 6</span>
+                    <div id="program_description">Series which sees insurance fraudsters caught on camera. A railway worker's £300,000 personal injury claim for a broken thumb hits the buffers.</div>
+                </div>
+                <div id="input_source">
+                    <div class="banner_title">Input Source</div>
+                    <div class="source focusable focused" tabIndex=21>Digital TV</div>
+                    <div class="source focusable" tabIndex=22>HDMI 1</div>
+                    <div class="source focusable" tabIndex=23>HDMI 2</div>
+                    <div class="source focusable" tabIndex=24>HDMI 3</div>
+                    <div class="source focusable" tabIndex=25>Analog TV</div>
+                    <div class="source focusable" tabIndex=26>None</div>
+                </div>
+            </div>
+        </div>
+        <div id="content">
+            <div class="app focusable" tabIndex=1><img src="img/netflix.png"></div>
+            <div class="app focusable" tabIndex=2><img src="img/youtube.png"></div>
+            <div class="app focusable" tabIndex=3><img src="img/twitter.png"></div>
+            <div class="app focusable" tabIndex=4><img src="img/facebook.png"></div>
+            <div class="app focusable" tabIndex=5><img src="img/yahoo.png"></div>
+            <div class="app focusable" tabIndex=6><img src="img/linkedin.png"></div>
+            <div class="app focusable" tabIndex=7><img src="img/wordpress.png"></div>
+            <div class="app focusable" tabIndex=8><img src="img/vimeo.png"></div>
+        </div>
+        <div id="footer">
+        </div>
+
+    </body>
 </html>

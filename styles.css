@@ -1,3 +1,7 @@
+/* #Disable Firefox dotted focus outline */
+:focus {outline:none;}
+::-moz-focus-inner {border:0;}
+
 body {
     background-image: url("img/background_hd.jpg");
     background-repeat: no-repeat;
@@ -13,35 +17,162 @@ body {
 
 #header_left {
     float: left;
-    width: 640px;
+    width: 645px;
     height: 100%;
 }
 
 #header_right {
     float: left;
-    width: 640px;
+    width: 635px;
     height: 100%;
 }
 
 #info {
     width: 100%;
     text-align: right;
-    height: 30%;
+    height: 60px;
     font-size: 24px;
 }
 
-#navigation {
+#news {
+    width: auto;
+    height: 100px;
+    font-size: 20px;
+    border: solid 1px grey;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-family: Arial;
+}
 
+#news_image {
+    margin: 5px;
+    float: left;
+    overflow: hidden;
+}
+
+#newsimg {
+    width: 150px;
+    height: auto;
+    max-height: 95px;
+}
+
+#news_title {
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#news_description {
+    font-size: 16px;
+}
+
+#channel_info {
+    width: auto;
+    height: 100px;
+    border: solid 1px grey;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    font-family: Arial;
+    overflow: hidden;
+}
+
+#channel_title {
+    color: white;
+}
+
+#program_title {
+    padding-left: 5px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#program_time {
+    float: right;
+    font-size: 14px;
+}
+
+#program_subtitle {
+    padding-left: 5px;
+    font-size: 16px;
+}
+
+#program_description {
+    padding-left: 5px;
+}
+
+#input_source {
+    text-align: left;
+    width: auto;
+    height: 100px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    font-family: Arial;
+    border: solid 1px grey;
 }
 
 #content {
     float: left;
     height: 160px;
-    width: 1280;
+    width: 1280px;
 }
 
 #footer {
     height: 160px;
     width: 1280px;
     clear: both;
+}
+
+#window {
+    margin: 5px 5px 5px 5px;
+}
+
+#weatherimg {
+    width: 36px;
+    height: 36px;
+}
+
+.app {
+    float: left;
+    margin: 10px 10px 10px 10px;
+    width: 128px;
+    height: 128px;
+}
+
+.source {
+    text-align: center;
+    font-size: 20px;
+    width: 180px;
+    height: 30px;
+    line-height: 30px;
+    vertical-align: middle;
+    margin-left: 15px;
+}
+
+.source.focused {
+    background: #BFBFBF;
+    color: black;
+}
+
+.focusable {
+    float: left;
+    transition: all 0.4s ease;
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+}
+
+.focusable:focus {
+    box-shadow: 0 0 2px 3px #78aeda, 0 0 2px #78aeda inset;
+    border-radius: 3px;
+}
+
+.banner_title {
+    font-family: Arial;
+    font-size: 20px;
+    font-weight: bold;
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: #8F8F8F;
 }
